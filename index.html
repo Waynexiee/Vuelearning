@@ -5,7 +5,14 @@
 	</head>
 	<body>
 		<div id="app">
-			<span v-if="seen">You could see me!</span>
+			<ol>
+				<todo-item
+						v-for="item in groceryList"
+						v-bind:todo="item"
+						v-bind:key="item.id">
+				</todo-item>
+			</ol>
+
 		</div>
 
 		<script src="index.js"></script>

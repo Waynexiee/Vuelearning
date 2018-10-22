@@ -1,33 +1,22 @@
-Vue.component('todo-item', {
-  template:  '<li> {{ title }} <button v-on:click="$emit(\'remove\')">Remove</button></li>',
-  props: ['title']
+Vue.component('tab-home', {
+  template: '<div>Home component</div>'
+});
+Vue.component('tab-posts', {
+  template: '<div>Posts component</div>'
+});
+Vue.component('tab-archive', {
+  template: '<div>Archive component</div>'
 });
 
 new Vue({
-  el: '#todo-list-item',
+  el: '#dynamic-component-demo',
   data: {
-    newTodoText: '',
-    todos: [
-      {
-        id: 1,
-        title: 'Do the dishes',
-      },
-      {
-        id: 2,
-        title: 'Take out the trash',
-      },
-      {
-        id: 3,
-        title: 'Mow the lawn'
-      }
-    ],
-    nextTodoId: 4
+    currentTab: 'Home',
+    tabs: ['Home', 'Posts', 'Archive']
   },
-  methods: {
-    addNewTodo: function () {
-      this.todos.push({id: this.nextTodoId, title: this.newTodoText});
-      this.nextTodoId ++;
-      this.newTodoText = "";
+  computed: {
+    currentTabComponent: function () {
+      return 'tab-' + this.currentTab.toLowerCase()
     }
   }
 });

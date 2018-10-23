@@ -4,17 +4,13 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
-		<div id="dynamic-component-demo" class="demo">
-			<button
-				v-for="tab in tabs"
-				v-bind:key="tab"
-				v-bind:class="['tab-button', { active: currentTab === tab }]"
-				v-on:click="currentTab = tab">{{ tab }}
+		<div id="example-1">
+			<button @click="show = !show">
+				Toggle Render
 			</button>
-			<component
-				v-bind:is="currentTabComponent"
-			    class="tab"
-			></component>
+			<transition name="slide-fade">
+				<p v-if="show">hello</p>
+			</transition>
 		</div>
 		<script src="index.js"></script>
 	</body>
@@ -22,3 +18,4 @@
 
 
 <!--Why return function data for template-->
+<!--native event-->
